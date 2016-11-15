@@ -1,0 +1,36 @@
+{% extends "layout.html.twig" %}
+
+{%  block title %}
+    Liste des lieux
+{% endblock %}
+
+{% block body %}
+    {{ msg }}
+    {% if lieu %}
+        <table>
+            <thead>
+                <th>Nom</th>
+                <th>Longitude</th>
+                <th>Latitude</th>
+                <th>Date Ajout</th>
+            </thead>
+
+            {% for instance in lieu %}
+                <tr>
+                    <td> {{ instance.nom       }} </td>
+                    <td> {{ instance.longitude }} </td>
+                    <td> {{ instance.latitude  }} </td>
+                    <td> {#{ instance.dateajout }#} </td>
+                    {#<td>
+                        <a href="{{ path('updatepersonne', { nompersonne: instance.nompersonne, prenompersonne: instance.prenompersonne }) }}" 
+                           class="btn btn-sm btn-primary" title="modifier">
+                            <i class="fa fa-pencil fa-lg"></i>
+                        </a> 
+                    </td>#}
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        Y'a pas de lieu wesh !
+    {% endif %}
+{% endblock %}

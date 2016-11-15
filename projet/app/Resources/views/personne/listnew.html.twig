@@ -1,0 +1,37 @@
+{% extends "layout.html.twig" %}
+
+{%  block title %}
+    Liste des personnes
+{% endblock %}
+
+{% block body %}
+    {% if personnes %}
+        <table>
+            <thead>
+                <th>Genre</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Abonnement</th>
+                <th>Email</th>
+            </thead>
+
+            {% for instance in personnes %}
+                <tr>
+                    <td> {{ instance.genre              }} </td>
+                    <td> {{ instance.nompersonne        }} </td>
+                    <td> {{ instance.prenompersonne     }} </td>
+                    <td> {{ instance.personneabonnement }} </td>
+                    <td> {{ instance.email              }} </td>
+                    <td>
+                        <a href="{{ path('updatepersonne', { nompersonne: instance.nompersonne, prenompersonne: instance.prenompersonne }) }}" 
+                           class="btn btn-sm btn-primary" title="modifier">
+                            <i class="fa fa-pencil fa-lg"></i>
+                        </a> 
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        Y'a personne wesh !
+    {% endif %}
+{% endblock %}

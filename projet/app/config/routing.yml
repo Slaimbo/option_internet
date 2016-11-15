@@ -1,0 +1,32 @@
+# pour pouvoir faire du routage par annotation dans les controlleurs
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+        
+home:
+    path:       /{message}
+    defaults:  {_controller: AppBundle:Default:home, message: '' }
+    
+listproduit:
+    path: /produits/list.{_format}/{message}
+    defaults: {_controller: AppBundle:Produit:listProduit, message: '', _format: "html"}
+
+addpersonne:
+    path: /personne/add
+    defaults: {_controller: AppBundle:Personne:addPersonne }
+    
+updatepersonne:
+    path: /personne/update/{nompersonne}/{prenompersonne}
+    defaults: {_controller: AppBundle:Personne:updatePersonne }
+
+listlieux:
+    path: /lieu/list.html/{message}
+    defaults: {_controller: AppBundle:Lieu:listLieu, message: ''}
+    
+deletelieux:
+    path: /lieu/deletelieu.html/{message}
+    defaults: {_controller: AppBundle:Lieu:deleteLieu, message: ''}
+    
+updatelieu:
+    path: /lieu/updatelieu.html/{lieu_id}
+    defaults: {_controller: AppBundle:Lieu:updateLieu, lieu_id: ''}
